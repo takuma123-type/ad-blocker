@@ -1,6 +1,19 @@
-const adElements = document.querySelectorAll(
-  '.ad, [id*="ad"], [class*="ad"], [class*="google_image_div"], [id*="google_image_div"]'
-);
-adElements.forEach((element) => {
-  element.style.display = "none";
-});
+const adBlock = () => {
+  const removeElements = (selector) => {
+    document.querySelectorAll(selector).forEach((el) => el.remove());
+  };
+
+  removeElements("iframe");
+  removeElements(".yjAdImage");
+  removeElements(".yadsOverlay");
+};
+
+const onPageLoad = () => {
+  adBlock();
+  setTimeout(adBlock, 3000);
+  setTimeout(adBlock, 5000);
+};
+
+document.addEventListener("DOMContentLoaded", onPageLoad);
+window.addEventListener("load", onPageLoad);
+chrome.runtime.onMessage.addListener(adBlock);
