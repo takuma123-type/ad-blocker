@@ -11,6 +11,9 @@
     },
     "default_popup": "popup.html"
   },
+  "background": {
+    "service_worker": "js/Block.js"
+  },
   "declarative_net_request": {
     "rule_resources": [
       {
